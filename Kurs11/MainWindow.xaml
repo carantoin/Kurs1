@@ -1,0 +1,198 @@
+﻿<Window x:Class="Kurs11.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kurs11"
+        mc:Ignorable="d"
+        Title="Учет оптового склада" Height="800" Width="1200">
+
+    <Grid>
+        <TabControl>
+            <TabItem Header="Поставщики">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <GroupBox Header="Добавить поставщика" Margin="10">
+                        <StackPanel>
+                            <Label Content="Название:"/>
+                            <TextBox Text="{Binding SupplierName}" Margin="0,0,0,10"/>
+
+                            <Label Content="Адрес:"/>
+                            <TextBox Text="{Binding SupplierAddress}" Margin="0,0,0,10"/>
+
+                            <Label Content="Телефон:"/>
+                            <TextBox Text="{Binding SupplierPhone}" Margin="0,0,0,20"/>
+
+                            <Button Content="Добавить" Command="{Binding AddSupplierCommand}" Margin="0,0,0,10"/>
+                            <Button Content="Удалить выбранного" 
+                                    Command="{Binding DeleteSupplierCommand}"
+                                    Background="LightCoral"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <DataGrid Grid.Column="1" 
+                              ItemsSource="{Binding Suppliers}"
+                              SelectedItem="{Binding SelectedSupplier}"
+                              AutoGenerateColumns="False"
+                              Margin="10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                            <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="200"/>
+                            <DataGridTextColumn Header="Адрес" Binding="{Binding Address}" Width="200"/>
+                            <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" Width="150"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Покупатели">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <GroupBox Header="Добавить покупателя" Margin="10">
+                        <StackPanel>
+                            <Label Content="Название:"/>
+                            <TextBox Text="{Binding CustomerName}" Margin="0,0,0,10"/>
+
+                            <Label Content="Адрес:"/>
+                            <TextBox Text="{Binding CustomerAddress}" Margin="0,0,0,10"/>
+
+                            <Label Content="Телефон:"/>
+                            <TextBox Text="{Binding CustomerPhone}" Margin="0,0,0,20"/>
+
+                            <Button Content="Добавить" Command="{Binding AddCustomerCommand}" Margin="0,0,0,10"/>
+                            <Button Content="Удалить выбранного" 
+                                    Command="{Binding DeleteCustomerCommand}"
+                                    Background="LightCoral"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <DataGrid Grid.Column="1" 
+                              ItemsSource="{Binding Customers}"
+                              SelectedItem="{Binding SelectedCustomer}"
+                              AutoGenerateColumns="False"
+                              Margin="10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                            <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="200"/>
+                            <DataGridTextColumn Header="Адрес" Binding="{Binding Address}" Width="200"/>
+                            <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" Width="150"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Товары">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <GroupBox Header="Добавить товар" Margin="10">
+                        <StackPanel>
+                            <Label Content="Название:"/>
+                            <TextBox Text="{Binding ProductName}" Margin="0,0,0,10"/>
+
+                            <Label Content="Единица измерения:"/>
+                            <TextBox Text="{Binding ProductUnit}" Margin="0,0,0,10"/>
+
+                            <Label Content="Количество:"/>
+                            <TextBox Text="{Binding ProductQuantity}" Margin="0,0,0,10"/>
+
+                            <Label Content="Цена закупки:"/>
+                            <TextBox Text="{Binding PurchasePrice}" Margin="0,0,0,10"/>
+
+                            <Label Content="Цена продажи:"/>
+                            <TextBox Text="{Binding SalePrice}" Margin="0,0,0,10"/>
+
+                            <Label Content="Поставщик:"/>
+                            <ComboBox ItemsSource="{Binding Suppliers}"
+                                      SelectedItem="{Binding SelectedSupplier}"
+                                      DisplayMemberPath="Name"
+                                      Margin="0,0,0,20"/>
+
+                            <Button Content="Добавить" Command="{Binding AddProductCommand}" Margin="0,0,0,10"/>
+                            <Button Content="Удалить выбранный" 
+                                    Command="{Binding DeleteProductCommand}"
+                                    Background="LightCoral"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <DataGrid Grid.Column="1" 
+                              ItemsSource="{Binding Products}"
+                              SelectedItem="{Binding SelectedProduct}"
+                              AutoGenerateColumns="False"
+                              Margin="10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                            <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="150"/>
+                            <DataGridTextColumn Header="Ед. изм." Binding="{Binding Unit}" Width="80"/>
+                            <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="80"/>
+                            <DataGridTextColumn Header="Цена закупки" Binding="{Binding PurchasePrice}" Width="100"/>
+                            <DataGridTextColumn Header="Цена продажи" Binding="{Binding SalePrice}" Width="100"/>
+                            <DataGridTextColumn Header="Поставщик" Binding="{Binding Supplier.Name}" Width="150"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Продажи">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <GroupBox Header="Оформить продажу" Margin="10">
+                        <StackPanel>
+                            <Label Content="Товар (доступные):"/>
+                            <ComboBox ItemsSource="{Binding AvailableProducts}"
+                                      SelectedItem="{Binding SelectedProduct}"
+                                      DisplayMemberPath="Name"
+                                      Margin="0,0,0,10"/>
+
+                            <Label Content="Покупатель:"/>
+                            <ComboBox ItemsSource="{Binding Customers}"
+                                      SelectedItem="{Binding SelectedCustomer}"
+                                      DisplayMemberPath="Name"
+                                      Margin="0,0,0,10"/>
+
+                            <Label Content="Количество:"/>
+                            <TextBox Text="{Binding SaleQuantity}" Margin="0,0,0,20"/>
+
+                            <Button Content="Оформить продажу" 
+                                    Command="{Binding AddSaleCommand}"
+                                    Background="LightGreen"
+                                    Height="40"
+                                    FontSize="14"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <DataGrid Grid.Column="1" 
+                              ItemsSource="{Binding Sales}"
+                              SelectedItem="{Binding SelectedSale}"
+                              AutoGenerateColumns="False"
+                              Margin="10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                            <DataGridTextColumn Header="Товар" Binding="{Binding Product.Name}" Width="150"/>
+                            <DataGridTextColumn Header="Поставщик" Binding="{Binding Supplier.Name}" Width="150"/>
+                            <DataGridTextColumn Header="Покупатель" Binding="{Binding Customer.Name}" Width="150"/>
+                            <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="80"/>
+                            <DataGridTextColumn Header="Сумма" Binding="{Binding TotalAmount}" Width="100"/>
+                            <DataGridTextColumn Header="Дата" Binding="{Binding SaleDate, StringFormat=dd.MM.yyyy}" Width="100"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
