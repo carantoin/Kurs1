@@ -1,5 +1,4 @@
-﻿using Kurs11.Data;
-using Kurs11.Models;
+﻿using Kurs11.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading.Tasks;
 
-namespace KursWa.Services
+namespace Kurs11.Services
 {
     public class DatabaseService
     {

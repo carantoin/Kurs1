@@ -1,7 +1,7 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿/*using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Kurs11.Models;
-using KursWa.Services;
+using Kurs11.Services;
 using System;
 using System;
 using System.Collections.Generic;
@@ -284,4 +284,4 @@ namespace Kurs11.ViewModels
             SalePrice = 0;
         }
     }
-}
+}*/
